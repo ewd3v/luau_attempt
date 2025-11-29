@@ -21,11 +21,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v5
 
-      - name: Install tooling
-        uses: CompeyDev/setup-rokit@v0.1.2
+      - name: Setup pesde
+        uses: ewd3v/setup-pesde@v0.1.1
 
       - name: Check formatting
-        run: ./scripts/format_check.sh
+        run: pesde run format_check
 
   analyze:
     name: Analyze and lint Luau files
@@ -35,13 +35,10 @@ jobs:
         uses: actions/checkout@v5
 
       - name: Setup pesde
-        uses: ewd3v/setup-pesde@v0.1.0
-
-      - name: Install tooling
-        uses: CompeyDev/setup-rokit@v0.1.2
+        uses: ewd3v/setup-pesde@v0.1.1
 
       - name: Analyze
-        run: ./scripts/analyze.sh
+        run: pesde run analyze
 
   test:
     name: Run tests
@@ -51,13 +48,10 @@ jobs:
         uses: actions/checkout@v5
 
       - name: Setup pesde
-        uses: ewd3v/setup-pesde@v0.1.0
+        uses: ewd3v/setup-pesde@v0.1.1
 
       - name: Setup Luau
         uses: ewd3v/setup-luau@v0.1.0
 
-      - name: Install tooling
-        uses: CompeyDev/setup-rokit@v0.1.2
-
       - name: Run tests
-        run: ./scripts/test.sh
+        run: pesde run test
